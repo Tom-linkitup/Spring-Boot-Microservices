@@ -1,9 +1,13 @@
 package com.programming.inventoryservice.controller;
 
+import com.programming.inventoryservice.dto.InventoryResponse;
 import com.programming.inventoryservice.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/inventory")
@@ -16,9 +20,9 @@ public class InventoryController {
         this.inventoryService = inventoryService;
     }
 
-    @GetMapping("/{sku-code}")
+    @PostMapping
     @ResponseStatus(HttpStatus.OK)
-    public boolean isInStock(@PathVariable("sku-code") String skuCode) {
-        return inventoryService.isInStock(skuCode);
+    public List<InventoryResponse> isInStock(@RequestBody Map<String, Integer> skuCodeWithQuantity) {
+        return inventoryService.isInStock(skuCodeWithQuantity);
     }
 }

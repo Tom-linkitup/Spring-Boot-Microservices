@@ -23,7 +23,7 @@ public class InventoryServiceApplication {
 
 			Inventory inventory1 = new Inventory();
 			inventory1.setSkuCode("MacBook_Air");
-			inventory1.setQuantity(0);
+			inventory1.setQuantity(3);
 
 			inventoryRepository.save(inventory);
 			inventoryRepository.save(inventory1);

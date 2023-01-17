@@ -23,4 +23,5 @@ public class Inventory {
     private String skuCode;
     @Column(name = "quantity")
     private Integer quantity;
+
 }
