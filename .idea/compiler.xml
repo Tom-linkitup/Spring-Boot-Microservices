@@ -13,10 +13,10 @@
         <module name="product-service" />
         <module name="order-service" />
         <module name="inventory-service" />
+        <module name="discovery-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="discovery-server" target="1.8" />
       <module name="discovery-service" target="1.8" />
     </bytecodeTargetLevel>
   </component>

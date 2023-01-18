@@ -44,7 +44,7 @@ public class OrderService {
 
         // call inventory service to check the item stock
         InventoryResponse[] inventoryResponses = webClient.post()
-                .uri("http://localhost:8082/api/inventory")
+                .uri("http://inventory-service/api/inventory")
                 .body(BodyInserters.fromValue(skuCodeWithQuantity))
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()

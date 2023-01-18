@@ -17,6 +17,7 @@
     <module>product-service</module>
     <module>order-service</module>
     <module>inventory-service</module>
+    <module>discovery-server</module>
   </modules>
   <properties>
     <spring-cloud.version>2021.0.2</spring-cloud.version>
