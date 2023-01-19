@@ -26,12 +26,12 @@ import java.util.stream.Collectors;
 public class OrderService {
 
     private final OrderRepository orderRepository;
-    private final WebClient webClient;
+    private final WebClient.Builder webClientBuilder;
 
     @Autowired
-    public OrderService(OrderRepository orderRepository, WebClient webClient) {
+    public OrderService(OrderRepository orderRepository, WebClient.Builder webClientBuilder) {
         this.orderRepository = orderRepository;
-        this.webClient = webClient;
+        this.webClientBuilder = webClientBuilder;
     }
 
     public void createOrder(OrderRequest orderRequest) {
@@ -43,7 +43,7 @@ public class OrderService {
                 .collect(Collectors.toMap(OrderItem::getSkuCode, OrderItem::getQuantity));
 
         // call inventory service to check the item stock
-        InventoryResponse[] inventoryResponses = webClient.post()
+        InventoryResponse[] inventoryResponses = webClientBuilder.build().post()
                 .uri("http://inventory-service/api/inventory")
                 .body(BodyInserters.fromValue(skuCodeWithQuantity))
                 .accept(MediaType.APPLICATION_JSON)
